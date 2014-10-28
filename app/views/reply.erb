@@ -1,7 +1,5 @@
 <li class="reply">
-	<% @awnser = Peep.get(reply.answer_id)%>
-	<p class="message"><%= @awnser.message %></p>
-	<%@user = User.get(@awnser.user_id)%>
-	<p class="author">created by:<%=@user.name%> ( <%=@user.username%> )  </p>
-	<p class="date">at:<%= @awnser.created_at.strftime("%d/%m/%Y %H:%M")%></p>
+	<p class="message"><%= reply.answer.message %></p>
+	<p class="author">created by:<%= reply.answer.user.name%> ( <%=reply.answer.user.username%> )  </p>
+	<p class="date">at:<%= reply.answer.created_at.strftime("%d/%m/%Y %H:%M")%></p>
 </li>

@@ -1,9 +1,8 @@
 <li class="peep">
 	<p class="message"><%= peep.message %></p>
-	<%@user = User.get(peep.user_id)%>
-	<p class="author">created by:<%=@user.name%> ( <%=@user.username%> )  </p>
+	<p class="author">created by <%= peep.user.name%> ( <%=peep.user.username%> )  </p>
 	<div class="button_reply">
-		<%if current_user && @user.id != current_user.id%>
+		<%if current_user && peep.user.id != current_user.id%>
 			<form action="peep/new" method="get">
 				<input type="hidden" name ="peep_id" value="<%=peep.id%>"/>
 				<p><input type="submit" value="Reply" class="button"/></p>

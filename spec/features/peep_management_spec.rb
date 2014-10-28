@@ -102,7 +102,6 @@ feature "To reply to a peep" do
 
 	scenario "reply should be visible under peep" do
 		reply
-		save_and_open_page
 		expect(page.body.index("Reply to another user")).to be > (page.body.index("Test second peep"))
 	end
 
