@@ -1,5 +1,6 @@
 
 get '/users/new' do
+	@signinUp = true
 	erb :"users/new"
 end
 

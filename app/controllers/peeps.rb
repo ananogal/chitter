@@ -1,4 +1,5 @@
 get '/peep/new' do
+	@peeing = true
 	if params[:peep_id] 
 		session[:peep_id] = params[:peep_id]
 	end

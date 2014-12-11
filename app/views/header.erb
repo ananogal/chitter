@@ -3,18 +3,24 @@
         <a href="/">Chitter</a>
     </section>
     <section id="user-peeps" >
-        <% if current_user %>
+        <%if current_user %>
             <aside id="welcome-message">
                 Welcome, <%= current_user.name %>  
             </aside>
-            <a href='/peep/new' id='sign-in' class='button'>New peep</a>
+            <%if !@peeing %>
+                <a href='/peep/new' id='sign-in' class='button'>New peep</a>
+            <%end %>
             <form id="sign-out" method="post" action="/sessions">
             	<input type="hidden" name="_method" value="delete">
             	<input type="submit" class='button' value="Sign out">
           	</form>	
         <% else %>
-        	<a href='/users/new' id='sign-up' class='button'>Sign up</a>  
-            <a href='/sessions/new' id='sign-in' class='button'>Sign in</a>    
+            <%if !@signinUp%>
+        	   <a href='/users/new' id='sign-up' class='button'>Sign up</a>  
+            <%end%>
+            <%if !@signingIn %>
+                <a href='/sessions/new' id='sign-in' class='button'>Sign in</a>    
+            <%end%>
         <% end %>
     </section>
 </header>
