@@ -2,7 +2,7 @@
 
 Make a twitter clone that will allow the users to post messages to a public stream.
 
-Features
+##Features
 - In order ti use chitter as a maker I want to sign up to the service
 - In order to use chitter as a maker I want to log in
 - In order to avoid others to use my account as a maker I want to log out
@@ -18,10 +18,22 @@ Notes:
 - You only can peep if you are logged in
 
 Level 2 
-
 - Deploy to staging and production environment.
 
 Bonus
 
 - In order to start a conversation as a maker I want to reply to a peep from another user
 - Work on the css to make it look good 
+
+#Tecnologies used
+    -Ruby
+    -RSpec
+    -Sinatra
+    -Capybara
+    -PostgreSQL
+    -HTML
+    -CSS
+    
+#How to use it 
+Access the site in Heroku:<br/>
+https://prdchitter.herokuapp.com/
