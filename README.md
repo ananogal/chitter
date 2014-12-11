@@ -1,12 +1,6 @@
 #Week 4 Challenger - Chitter
 
 ![Chitter home](./public/images/home.png)
-![Chitter signup](./public/images/sign_up.png)
-![Chitter signin](./public/images/sign_in.png)
-![Chitter peep](./public/images/peep.png)
-
-
-
 
 #Objective
 Make a twitter clone that will allow the users to post messages to a public stream.
