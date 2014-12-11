@@ -23,7 +23,7 @@ a {
   color: white; /*text colour*/
   padding: 5px 10px;
   text-align: center;
-  border-radius: 4px; /*rounded corners*/
+  border-radius: 10px; /*rounded corners*/
   margin-left: 5px;
   margin-right: 5px;
   text-shadow: 0 0 2px rgba(0,0,0, 0.4); /*for readability*/
@@ -93,10 +93,11 @@ header #user-peeps > *{
 }
 
 .peep {
-  	background-color: #fff;
-  	box-shadow: 0 0 5px rgba(0,0,0,0.4);
-  	margin:10px inherit;
-  	padding: 15px 10px;
+	background-color: #fff;
+	box-shadow: 0 0 5px rgba(0,0,0,0.4);
+	margin:10px inherit;
+	padding: 15px 10px;   
+  border-radius: 10px;
 }
 
 .peep .message {
@@ -128,10 +129,11 @@ header #user-peeps > *{
 }
 
 .reply{
-    background-color: #6a6c6e;
-    box-shadow: 0 0 5px rgba(0,0,0,0.4);
-    margin: 10px 20px 10px 20px;
-    padding: 15px 10px;
+  background-color: #6a6c6e;
+  box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  margin: 10px 20px 10px 20px;
+  padding: 15px 10px;
+  border-radius: 10px;
 }
 
 .reply .message {

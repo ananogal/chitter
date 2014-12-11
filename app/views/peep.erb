@@ -1,7 +1,7 @@
 <li class="peep">
 	<p class="message"><%= peep.message %></p>
 	<p class="author">created by <%= peep.user.name%> ( <%=peep.user.username%> )  </p>
-	<div class="button_reply">
+	<section class="button_reply">
 		<%if current_user && peep.user.id != current_user.id%>
 			<form action="peep/new" method="get">
 				<input type="hidden" name ="peep_id" value="<%=peep.id%>"/>
@@ -9,8 +9,8 @@
 			</form>
 		<%end%>
 		<p class="date">at:<%= peep.created_at.strftime("%d/%m/%Y %H:%M")%></p>
-	</div>
-	<%@replies = Reply.all(:target_id => peep.id, :order => [:answer_id.desc])%>
+	</section>
+	<%@replies = Reply.getAwswerForPeep(peep.id)%>
 	<%	if @replies.count > 0 %>
 		<ul id="replies">
 			<% @replies.each do |reply| %>

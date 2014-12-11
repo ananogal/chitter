@@ -1,12 +1,12 @@
 <header>
-    <div id="logo">
+    <section id="logo">
         <a href="/">Chitter</a>
-    </div>
-    <div id="user-peeps" >
+    </section>
+    <section id="user-peeps" >
         <% if current_user %>
-            <span id="welcome-message">
+            <aside id="welcome-message">
                 Welcome, <%= current_user.name %>  
-            </span>
+            </aside>
             <a href='/peep/new' id='sign-in' class='button'>New peep</a>
             <form id="sign-out" method="post" action="/sessions">
             	<input type="hidden" name="_method" value="delete">
@@ -16,6 +16,6 @@
         	<a href='/users/new' id='sign-up' class='button'>Sign up</a>  
             <a href='/sessions/new' id='sign-in' class='button'>Sign in</a>    
         <% end %>
-    </div>
+    </section>
 </header>
 	

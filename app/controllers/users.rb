@@ -24,13 +24,10 @@ get '/users/forgotten' do
 end
 
 post '/users/forgotten' do
-	@user = User.first(:email => params[:email])
-	if @user
-		@user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
-        @user.password_token_timestamp = Time.now
-        @user.save
-        send_message(@user)
-        flash[:notice] = "We've just send you an email confirmation."
+	user = User.createTokenForEmail(params[:email])
+	if user
+    send_message(user)
+    flash[:notice] = "We've just send you an email confirmation."
 	else
 		flash.now[:errors] = ["The email you enter is not correct."]
 	end
@@ -50,13 +47,8 @@ get '/users/reset_password/:token' do
 end
 
 post '/users/reset_password' do
-	@password = params[:password]
-	@password_confirmation = params[:password_confirmation]
 	@token = params[:token]
-	@user = User.first(:password_token => @token)
-	@user.password = @password
-	@user.password_confirmation = @password_confirmation
-	
+	@user = User.resetPasswordForToken(@token, params[:password], params[:password_confirmation])
 	if @user.save
 		session[:user_id] = @user.id
 		redirect to'/'

@@ -1,8 +1,8 @@
 
 <% if flash[:notice] %>
-  <div class="flash notice">
+  <section class="flash notice">
     <%= flash[:notice] %>
-  </div>
+  </section>
 <% end %>
 <% if flash[:errors] && !flash[:errors].empty? %> 
   <ul id="errors">

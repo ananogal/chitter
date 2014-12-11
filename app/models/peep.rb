@@ -9,5 +9,9 @@ class Peep
 
 	has n, :replies, :child_key => [ :answer_id ]
  	has n, :comments, self, :through => :replies, :via => :target
+
+ 	def self.findOnlyPeeps(ids)
+		Peep.all(:id.not => ids ,:order => [:created_at.desc])
+ 	end
 end
 

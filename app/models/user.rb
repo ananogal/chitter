@@ -20,19 +20,19 @@ class User
 			    }
 	property :password_digest, Text
 	property :password_token, Text
-  	property :password_token_timestamp, Time
+	property :password_token_timestamp, Time
 
-  	has n, :peeps
+	has n, :peeps
 
-  	validates_confirmation_of :password
-  	validates_presence_of :password, :message => "The password is mandatory"
+	validates_confirmation_of :password
+	validates_presence_of :password, :message => "The password is mandatory"
 
-  	def password=(password)
+	def password=(password)
 		@password = password
-    	self.password_digest = BCrypt::Password.create(password)
-  	end
+  	self.password_digest = BCrypt::Password.create(password)
+	end
 
-  	def self.authenticate(email, password)
+	def self.authenticate(email, password)
 		user = first(:email => email)
 		if user && BCrypt::Password.new(user.password_digest) == password
 			user
@@ -40,4 +40,26 @@ class User
 			nil
 		end
 	end
+
+	def self.createTokenForEmail(email)
+		user = first(:email => email)
+		return nil if !user
+
+		user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
+    user.password_token_timestamp = Time.now
+    user.save
+    return user
+  end
+
+  def self.resetPasswordForToken(token, password, password_conf)
+		user = first(:password_token => token)
+		if user
+			user.password = password
+			user.password_confirmation = password_conf
+			user.save
+			return user
+		else
+			return nil
+		end
+  end	
 end

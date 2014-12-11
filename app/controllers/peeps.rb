@@ -8,7 +8,6 @@ end
 post '/peep/new' do
 	if session[:peep_id]
 		@parent_peep = Peep.get(session[:peep_id])
-
 		if @parent_peep
 			@new_peep = Peep.create(:message =>params[:message], :created_at => DateTime.now, :user_id => session[:user_id])
 			if @new_peep
